@@ -161,7 +161,9 @@ pub trait AnyValue<'ctx>: AsValueRef + Debug {
         if operand.is_null() {
             return None;
         }
-        Some(AnyValueEnum::new(operand))
+        unsafe {
+            Some(AnyValueEnum::new(operand))
+        }
     }
 }
 
